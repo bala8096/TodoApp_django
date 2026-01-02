@@ -1,0 +1,31 @@
+{% extends 'base.html' %}
+{% block content %}
+
+<h1>Create a Todo</h1>
+
+<form method="POST">
+    {% csrf_token %}
+
+    <div class="mb-3">
+        <label class="form-label">Enter title</label>
+        <input type="text" class="form-control" value="{{ todo.title }}" name="title" placeholder="Enter your title" required>
+    </div>
+
+    <div class="mb-3">
+        <label class="form-label">Enter description</label>
+        <textarea class="form-control" name="description" rows="3">{{ todo.description }}</textarea>
+    </div>
+
+    <div class="mb-3 form-check">
+        <input type="checkbox" class="form-check-input" name="completed" id="completed" {% if todo.completed %}checked{% endif %}>
+        <label class="form-check-label" for="completed">
+            Completed
+        </label>
+    </div>
+
+    <button type="submit" class="btn btn-secondary">
+        Submit
+    </button>
+</form>
+
+{% endblock %}

@@ -1,0 +1,18 @@
+{% extends 'base.html' %}
+{% block content %}
+{% for t in todos %}
+<ul>
+
+  
+<li>{{t.title}}</li>
+
+  
+</ul>
+<li class="nav-item btn btn-secondary"><a class="nav-link" href="{% url  'todo_update' t.id %}">edit todo</a></li>
+<li class="nav-item btn btn-secondary"><a class="nav-link" href="{% url  'todo_delete' t.id %}">delete todo</a></li>
+
+{% endfor %}
+</br></br>
+<li class="nav-item btn btn-secondary"><a class="nav-link" href="{% url  'todo_create' %}">create todo</a></li>
+
+{% endblock %}
